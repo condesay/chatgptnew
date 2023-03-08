@@ -19,7 +19,7 @@ def generate_text(prompt):
     return message.strip()
 
 def main():
-    st.title("OpenAI Chatbot Demo")
+    st.title(" ChatGPT Test")
 
     user_input = st.text_input("You:", "")
 
