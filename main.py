@@ -2,7 +2,7 @@
 import openai
 import streamlit as st
 
-openai.api_key = "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"
+openai.api_key ="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"
 model_engine = "gpt-3.5-turbo"
 
 def generate_text(prompt):
