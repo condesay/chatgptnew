@@ -28,6 +28,16 @@ def send_message(message_log):
 # Main function that runs the chatbot
 def main():
     # Initialize the conversation history with a message from the chatbot
+    
+    """ Application de Bases de Connaissances (ABC) utilisant du NLP avec Streamlit """
+
+	# Title
+	st.title(" Application de Bases de Connaissances (ABC)")
+	st.subheader("Application de Bases de Connaissances (ABC) utilisant du NLP avec Streamlit")
+	st.markdown("""
+    	#### Description
+    	Simple app chatgpt
+    	""")
     message_log = [
         {"role": "system", "content": "You are a helpful assistant."}
     ]
@@ -74,5 +84,8 @@ def main():
 
 
 # Call the main function if this file is executed directly (not imported as a module)
+st.sidebar.subheader("Information sur l'application de Bases de connaissances")
+	st.sidebar.text("Application ChatGPT")
+	
 if __name__ == "__main__":
     main()
