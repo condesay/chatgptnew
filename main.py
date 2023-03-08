@@ -2,9 +2,9 @@
 import openai
 import streamlit as st
 
-openai.api_key ="key"
-"
-model_engine = "gpt-3.5-turbo"
+openai.api_key ="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"
+
+model_engine = "davinci"
 
 def generate_text(prompt):
     response = openai.Completion.create(
