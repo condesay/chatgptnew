@@ -2,7 +2,7 @@
 import openai
 import streamlit as st
 
-openai.api_key ="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"
+openai.api_key ="k"
 
 model_engine = "davinci"
 
