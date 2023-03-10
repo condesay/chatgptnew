@@ -1,6 +1,3 @@
-graphviz
-matplotlib
-networkx
 openai
 streamlit
-streamlit-agraph
+streamlit_chat
