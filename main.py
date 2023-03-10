@@ -1,13 +1,43 @@
+# import streamlit as st
 
-import openai
+# st.title("ChatGPT-like Web App")
+# #storing the chat
+# if 'generated' not in st.session_state:
+#     st.session_state['generated'] = []
+# if 'past' not in st.session_state:
+#     st.session_state['past'] = []
+# user_input=st.text_input("You:",key='input')
+# if user_input:
+#     output=generate_response(user_input)
+#     #store the output
+#     st.session_state['past'].append(user_input)
+#     st.session_state['generated'].append(output)
+# if st.session_state['generated']:
+#     for i in range(len(st.session_state['generated'])-1, -1, -1):
+#         message(st.session_state["generated"][i], key=str(i))
+#         message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
+
+
+
+
 import streamlit as st
 
-openai.api_key ="k"
+# this loop will let us ask questions continuously
 
-model_engine = "davinci"
+while True:
+    
+    # Set up the model and prompt
+    model_engine = "text-davinci-003"
+    
+    prompt = input('Enter new prompt: ')
 
-def generate_text(prompt):
-    response = openai.Completion.create(
+    if 'exit' in prompt or 'quit' in prompt:
+        break
+
+    # Generate a response
+    # given the most recent context (4096 characters)
+    # continue the text up to 2048 tokens ~ 8192 charaters
+    completion = openai.Completion.create(
         engine=model_engine,
         prompt=prompt,
         max_tokens=1024,
@@ -15,19 +45,27 @@ def generate_text(prompt):
         stop=None,
         temperature=0.5,
     )
+    
+    # extracting useful part of response
+    response = completion.choices[0].text
+    
+    # printing response
+    print(response)
 
-    message = response.choices[0].text
-    return message.strip()
-
-def main():
-    st.title(" ChatGPT Test")
-
-    user_input = st.text_input("You:", "")
-
-    if st.button("Send"):
-        bot_response = generate_text(user_input)
-        st.text_area("Bot:", value=bot_response, height=200, max_chars=None, key=None)
-
-if __name__ == "__main__":
-    main()
-
+    
+st.title("ChatGPT-like Web App")
+#storing the chat
+if 'generated' not in st.session_state:
+    st.session_state['generated'] = []
+if 'past' not in st.session_state:
+    st.session_state['past'] = []
+user_input=st.text_input("You:",key='input')
+if user_input:
+    output=generate_response(user_input)
+    #store the output
+    st.session_state['past'].append(user_input)
+    st.session_state['generated'].append(output)
+if st.session_state['generated']:
+    for i in range(len(st.session_state['generated'])-1, -1, -1):
+        message(st.session_state["generated"][i], key=str(i))
+        message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
