@@ -17,7 +17,7 @@ def generate_response(prompt, api_key):
     return message
 
 def main():
-    st.title("ChatGPT Web App")
+    st.title("ChatGPT Web App by Sayon")
 
     # get user API key
     api_key = st.text_input("Enter OpenAI API Key:", type="password")
